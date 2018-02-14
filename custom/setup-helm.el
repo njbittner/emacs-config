@@ -1,3 +1,4 @@
+(use-package async)
 (use-package helm
   :init
   (progn
@@ -136,6 +137,8 @@
       :init
       (helm-projectile-on)
       (setq projectile-completion-system 'helm)
-      (setq projectile-indexing-method 'alien))))
+      (setq projectile-indexing-method 'alien))
+    )
+  )
 
 (provide 'setup-helm)

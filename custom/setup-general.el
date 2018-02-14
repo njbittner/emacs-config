@@ -62,5 +62,33 @@
 ;;   (setq make-backup-files nil)
 ;; )
 
+(use-package org-edit-latex)
+;; (use-package ov)
+(use-package pdf-tools)
+(use-package pydoc)
+;; (use-package rainbow-mode)
+;; (use-package s)
+;; (use-package recentf
+;;   :config
+;;   (setq recentf-exclude
+;;         '("COMMIT_MSG" "COMMIT_EDITMSG" "github.*txt$"
+;;           ".*png$" "\\*message\\*" "auto-save-list\\*"))
+;;   (setq recentf-max-saved-items 60))
+
+;; (use-package smart-mode-line
+;;   :config
+;;   (setq sml/no-confirm-load-theme t)
+;;   (setq sml/theme 'light)
+;;   (sml/setup))
+
+;; (use-package ov-highlight
+;;   :ensure nil
+;;   :load-path (lambda () (expand-file-name "ov-highlight" scimax-dir))
+;;   :bind ("H-h" . ov-highlight/body)
+;;   :init
+;;   (add-to-list 'load-path
+;;                (expand-file-name "ov-highlight" scimax-dir)))
+
+
 
 (provide 'setup-general)
