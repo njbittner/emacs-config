@@ -66,6 +66,8 @@
 ;; (use-package ov)
 (use-package pdf-tools)
 (use-package pydoc)
+(use-package ace-window
+  :bind (("C-x o" . ace-window)))
 ;; (use-package rainbow-mode)
 ;; (use-package s)
 ;; (use-package recentf
