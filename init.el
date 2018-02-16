@@ -22,7 +22,8 @@
 (require 'package)
 (setq package-archives
       '(("melpa-stable" . "https://stable.melpa.org/packages/")
-        ;; ("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 ; if nothing shows up, refresh
@@ -44,6 +45,7 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-helm-gtags)
+(require 'setup-c)
 
 
 
@@ -213,9 +215,9 @@
 ;;                              'company-yasnippet-or-completion
 ;;                              company-active-map)))
 
-(use-package zenburn-theme
-  :if (not (custom-theme-enabled-p 'lorisan))
-  :init (load-theme 'zenburn t))
+;; (use-package zenburn-theme
+;;   :if (not (custom-theme-enabled-p 'lorisan))
+;;   :init (load-theme 'zenburn t))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -268,7 +270,7 @@
  '(org2jekyll-source-directory (expand-file-name "~/Dropbox/jekyll/") nil (org2jekyll))
  '(package-selected-packages
    (quote
-    (zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu))))
+    (company-c-headers ace-window zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
