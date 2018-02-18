@@ -224,6 +224,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tango-dark)))
  '(org-publish-project-alist
    (\`
     (("default" :base-directory
@@ -270,7 +271,7 @@
  '(org2jekyll-source-directory (expand-file-name "~/Dropbox/jekyll/") nil (org2jekyll))
  '(package-selected-packages
    (quote
-    (company-c-headers ace-window zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu))))
+    (magit company-c-headers ace-window zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

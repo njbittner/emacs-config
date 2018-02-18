@@ -13,8 +13,6 @@
 (show-paren-mode t)
 (defalias 'yes-or-no-p 'y-or-n-p)	; input y/n instead of yes/no
 (set-default 'truncate-lines nil)	        ; Don't truncate lines
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
 (setq gc-cons-threshold 100000000)	; Garbage collection related
 ;; show unncessary whitespace that can mess up your diff
 (add-hook 'prog-mode-hook
@@ -39,8 +37,6 @@
   :init
   (global-company-mode 1)
   (delete 'company-semantic company-backends))
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
 ;; Package: projejctile
 (use-package projectile

@@ -2,7 +2,7 @@
 (setq global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
       mark-ring-max 5000                ; increase kill ring to contains 5000 entries
       mode-require-final-newline t      ; add a newline to end of file
-      tab-width 4                       ; default to 4 visible spaces to display a tab
+      tab-width 1                       ; default to 4 visible spaces to display a tab
       )
 
 (add-hook 'sh-mode-hook (lambda ()
