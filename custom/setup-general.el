@@ -53,10 +53,11 @@
 (windmove-default-keybindings)
 (use-package diminish)
 
-;; (use-package real-auto-save
-;;   (setq real-auto-save-interval 15)
-;;   (setq make-backup-files nil)
-;; )
+(use-package real-auto-save
+  :init
+  (setq real-auto-save-interval 15)
+  (setq make-backup-files nil)
+)
 
 (use-package org-edit-latex)
 ;; (use-package ov)
