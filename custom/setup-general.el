@@ -57,7 +57,10 @@
   :init
   (setq real-auto-save-interval 15)
   (setq make-backup-files nil)
-)
+  )
+
+(use-package magit
+  :pin melpa-stable)
 
 (use-package org-edit-latex)
 ;; (use-package ov)
