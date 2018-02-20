@@ -23,8 +23,15 @@
 (setq package-archives
       '(("melpa-stable" . "https://stable.melpa.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")
         ("gnu" . "https://elpa.gnu.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
+(setq package-archive-priorities
+      '(("melpa-stable" . 20)
+        ("marmalade" . 10)
+        ("org" . 10)
+        ("gnu" . 10)
+        ("melpa" . 12)))
 (package-initialize)
 ; if nothing shows up, refresh
 (when (not package-archive-contents)
@@ -34,8 +41,15 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(use-package exec-path-from-shell
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+  )
+
 (require 'use-package)
 (setq use-package-always-ensure t)
+;; (setq use-package-always-pin 'melpa-stable)
 
 ;; Custom Packages in /lisp
 (add-to-list 'load-path "~/.emacs.d/custom")
@@ -102,7 +116,7 @@
 ;;  '(org-journal-encrypt-on t)
 ;;  '(package-selected-packages
 ;;    (quote
-;;     (ac-c-headers ac-c-headers auto-complete-clang auto-dim-other-buffers swoop yaml-mode easy-jekyll jekyll-modes ample-zen-theme org2jekyll ein writegood-mode auto-complete-auctex org-brain org-clock-convenience org-drill-table request request-deferred org-gcal real-auto-save google-c-style helm-google google-this helm-org-rifle ggtags default-text-scale org-journal org-download org-bullets orca org-ac org-notebook org-pomodoro ob-ipython org-babel-eval-in-repl challenger-deep-theme company-auctex sx better-defaults org-beautify-theme ledger-mode haskell-mode expand-region disable-mouse csv-mode auctex-latexmk magit magit-filenotify latex-preview-pane auctex helm-spotify-plus helm-spotify zygospore ws-butler volatile-highlights undo-tree material-theme iedit helm-projectile helm-gtags function-args dtrt-indent counsel-projectile company clean-aindent-mode anzu ace-mc abyss-theme)))
+;;     (ac-c-headers ac-c-headers auto-complete-clang auto-dim-other-buffers swoop yaml-mode easy-jekyll jekyll-modes ample-zen-theme org2jekyll ein writegood-mode auto-complete-auctex org-brain org-clock-convenience org-drill-table request request-deferred org-gcal real-auto-save google-c-style helm-google google-this helm-org-rifle ggtags default-text-scale org-journal org-download org-bullets orca org-ac org-notebook org-pomodoro ob-ipython org-babel-eval-in-repl challenger-deep-theme company-auctex sx better-defaults org-beautify-theme ledger-mode haskell-mode expand-region disable-mouse csv-mode auctex-latexmk magit magit-filenotify latex-preview-pane auctex helm-spotify-plus helm-spotify zygospore ws-butler volatile-highlights undo-tree materia-ltheme iedit helm-projectile helm-gtags function-args dtrt-indent counsel-projectile company clean-aindent-mode anzu ace-mc abyss-theme)))
 ;;  '(vc-annotate-background nil)
 ;;  '(vc-annotate-color-map
 ;;    (quote
@@ -225,7 +239,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes
+   (quote
+    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+ '(fci-rule-color "#37474f")
+ '(hl-sexp-background-color "#1c1f26")
  '(org-publish-project-alist
    (\`
     (("default" :base-directory
@@ -272,7 +293,29 @@
  '(org2jekyll-source-directory (expand-file-name "~/Dropbox/jekyll/") nil (org2jekyll))
  '(package-selected-packages
    (quote
-    (magit company-c-headers ace-window zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu))))
+    (exec-path-from-shell yafolding el-get company-jedi virtualenv dirtree neotree ein elpy magit company-c-headers ace-window zenburn-theme smex beacon org2jekyll org-bullets org-journal function-args counsel-projectile counsel ivy comment-dwim-2 zygospore yasnippet ws-butler volatile-highlights use-package undo-tree iedit helm-projectile helm-gtags dtrt-indent diminish company clean-aindent-mode auctex anzu)))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#f36c60")
+     (40 . "#ff9800")
+     (60 . "#fff59d")
+     (80 . "#8bc34a")
+     (100 . "#81d4fa")
+     (120 . "#4dd0e1")
+     (140 . "#b39ddb")
+     (160 . "#f36c60")
+     (180 . "#ff9800")
+     (200 . "#fff59d")
+     (220 . "#8bc34a")
+     (240 . "#81d4fa")
+     (260 . "#4dd0e1")
+     (280 . "#b39ddb")
+     (300 . "#f36c60")
+     (320 . "#ff9800")
+     (340 . "#fff59d")
+     (360 . "#8bc34a"))))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
