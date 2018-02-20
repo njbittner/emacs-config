@@ -46,6 +46,7 @@
 (require 'setup-editing)
 (require 'setup-helm-gtags)
 (require 'setup-c)
+(require 'setup-python)
 
 
 

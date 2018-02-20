@@ -3,6 +3,8 @@
     (set-face-attribute 'default nil :height 100)
   (set-face-attribute 'default nil :height 75))
 
+(load-theme 'material t) ;; load material theme
+(global-linum-mode t)
 (menu-bar-mode -1)			; disable menu bar
 (tool-bar-mode -1)			; disable toolbar
 ;; (scroll-bar-mode -1)			; disable scrollbar
