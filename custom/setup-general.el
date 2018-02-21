@@ -26,6 +26,12 @@
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
 
+;; Avy :)
+(use-package avy
+  :config (avy-setup-default)
+  :bind (("C-c C-i" . avy-resume))
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set up multiple cursors
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -56,7 +62,7 @@
 (windmove-default-keybindings)
 (use-package diminish)
 
-(use-package real-auto-save
+(use-package real-auto-slave
   :init
   (setq real-auto-save-interval 15)
   (setq make-backup-files nil)

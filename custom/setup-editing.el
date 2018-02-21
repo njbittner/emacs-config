@@ -26,6 +26,34 @@
 ;; (set-language-environment "UTF-8")
 ;; (prefer-coding-system 'utf-8)
 
+(use-package expand-region
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
+
+(use-package neotree
+  :config (progn (global-set-key [f8] 'neotree-toggle)
+  (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (defun neotree-project-dir ()
+    "Open NeoTree using the git root."
+    (interactive)
+    (let ((project-dir (projectile-project-root))
+          (file-name (buffer-file-name)))
+      (neotree-toggle)
+      (if project-dir
+          (if (neo-global--window-exists-p)
+              (progn
+                (neotree-dir project-dir)
+                (neotree-find file-name)))
+        (message "Could not find git project root."))))
+  (global-set-key [f8] 'neotree-project-dir)
+  )
+  )
+
+;; beter interfacing with debuggers
+(use-package realgud)
+
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode)
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -70,7 +98,29 @@
 (use-package yasnippet
   :defer t
   :init
-  (add-hook 'prog-mode-hook 'yas-minor-mode))
+  (progn
+    (add-hook 'prog-mode-hook 'yas-minor-mode)
+    (defun shk-yas/helm-prompt (prompt choices &optional display-fn)
+      "Use helm to select a snippet. Put this into `yas-prompt-functions.'"
+      (interactive)
+      (setq display-fn (or display-fn 'identity))
+      (if (require 'helm-config)
+          (let (tmpsource cands result rmap)
+            (setq cands (mapcar (lambda (x) (funcall display-fn x)) choices))
+            (setq rmap (mapcar (lambda (x) (cons (funcall display-fn x) x)) choices))
+            (setq tmpsource
+                  (list
+                   (cons 'name prompt)
+                   (cons 'candidates cands)
+                   '(action . (("Expand" . (lambda (selection) selection))))
+                   ))
+            (setq result (helm-other-buffer '(tmpsource) "*helm-select-yasnippet"))
+            (if (null result)
+                (signal 'quit "user quit!")
+              (cdr (assoc result rmap))))
+        nil))
+    ))
+(use-package yasnippet-snippets)
 
 ;; Package: clean-aindent-mode
 (use-package clean-aindent-mode
