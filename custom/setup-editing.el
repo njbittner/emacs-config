@@ -8,10 +8,23 @@
 (add-hook 'sh-mode-hook (lambda ()
                           (setq tab-width 4)))
 
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment "UTF-8")
-(prefer-coding-system 'utf-8)
+(use-package fill-column-indicator)
+
+;; (use-package highlight-current-line
+;;   :config
+;;   (progn
+;;     (global-hl-line-mode t)
+;;     (setq highlight-current-line-globally t)
+;;     (setq highlight-current-line-high-faces nil)
+;;     (setq highlight-current-line-whole-line nil)
+;;     (setq hl-line-face (quote highlight))
+;;     )
+;;   )
+
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-language-environment "UTF-8")
+;; (prefer-coding-system 'utf-8)
 
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode)
@@ -40,8 +53,9 @@
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
 (use-package volatile-highlights
-  :init
+  :config
   (volatile-highlights-mode t))
+
 
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree
@@ -262,5 +276,18 @@ Position the cursor at it's beginning, according to the current mode."
 ;;   ;; (fa-config-default)
 ;;   :bind (:map c-mode-map ([tab] . company-complete))
 ;;   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Set up multiple cursors
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package multiple-cursors
+  :config
+  (progn
+    (global-set-key (kbd "C-x C-SPC") 'mc/edit-lines)
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    (global-set-key (kbd "s->") 'mc/mark-all-like-this)
+    ))
+
 
 (provide 'setup-editing)

@@ -24,4 +24,36 @@
 ;;    ;; (define-key c-mode-map  [(tab)] 'company-complete)
 ;;    ;; (define-key c++-mode-map  [(tab)] 'company-complete))
 
+(defun my:flymake-google-init ()
+  (require 'flymake-google-cpplint)
+  (custom-set-variables
+   '(flymake-google-cpplint-command "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/cpplint"))
+  (flymake-google-cpplint-load)
+  )
+(add-hook 'c-mode-hook 'my:flymake-google-init)
+(add-hook 'c++-mode-hook 'my:flymake-google-init)
+
+(use-package google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+(semantic-mode 1)
+(defun my:add-semantic-to-autocomplete()
+  (add-to-list 'ac-sources 'ac-source-semantic)
+  )
+(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+                                        ; turn on ede mode
+(global-ede-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+
+;; setup GDB
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
+
+
 (provide 'setup-c)

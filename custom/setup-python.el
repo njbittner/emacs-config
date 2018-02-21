@@ -10,7 +10,7 @@
     :init
     (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
-  (setq python-shell-interpreter "jupyter"
+  (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "console --simple-prompt")
   (use-package ein)
 
@@ -32,6 +32,5 @@
   (use-package yapfify)
   (use-package pydoc-info)
   (use-package sphinx-doc)
-
 )
 (provide 'setup-python)
