@@ -31,6 +31,8 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package moe-theme)
+
 ;; Custom Packages in /lisp
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'setup-general)
@@ -42,3 +44,4 @@
 (require 'setup-c)
 (require 'setup-python)
 (require 'setup-org)
+(require 'setup-theme)

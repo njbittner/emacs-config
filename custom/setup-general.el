@@ -12,6 +12,7 @@
 (setq ring-bell-function 'ignore)	; stop annoying emacs ding
 (column-number-mode t)
 (show-paren-mode t)
+(setq show-paren-style 'expression)
 (defalias 'yes-or-no-p 'y-or-n-p)	; input y/n instead of yes/no
 (set-default 'truncate-lines nil)	        ; Don't truncate lines
 (setq gc-cons-threshold 100000000)	; Garbage collection related
