@@ -44,8 +44,7 @@
 ;; company
 (use-package company
   :init
-  (global-company-mode 1)
-  (delete 'company-semantic company-backends))
+  (global-company-mode 1))
 
 ;; Package: projejctile
 (use-package projectile
@@ -62,11 +61,11 @@
 (windmove-default-keybindings)
 (use-package diminish)
 
-(use-package real-auto-slave
-  :init
-  (setq real-auto-save-interval 15)
-  (setq make-backup-files nil)
-  )
+;; (use-package real-auto-save
+;;   :init
+;;   (setq real-auto-save-interval 15)
+;;   (setq make-backup-files nil)
+;;   )
 
 (use-package magit
   :pin melpa-stable)
