@@ -30,7 +30,11 @@
 (use-package avy
   :config (avy-setup-default)
   :bind (("C-c C-i" . avy-resume))
-)
+  )
+
+(use-package jekyll-modes)
+(use-package yaml-mode)
+(use-package markdown-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set up multiple cursors
